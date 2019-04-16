@@ -7,10 +7,16 @@
       <groupId>com.mycompany.app</groupId>
       <artifactId>app</artifactId>
       <version>1.0-SNAPSHOT</version>
-      <packaging>pom</packaging>
-     
+      <packaging>pom</packaging> 
       <modules>
         <module>projet1</module>
         <module>projet2</module>
       </modules>
+<distributionManagement>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>localhost.localdomain-snapshots</name>
+        <url>http://192.168.100.108:8081/repository/maven-snapshots/</url>
+    </snapshotRepository>
+</distributionManagement>
     </project>
