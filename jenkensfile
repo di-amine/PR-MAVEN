@@ -1,0 +1,51 @@
+pipeline {
+    agent any
+    parameters {
+        string( name: 'PERSON', defaultValue: 'MOHAMED', description: 'helloword')
+        password( name: 'PASSWORD', defaultValue: 'SECRET')
+    }
+    options {
+        timeout(time: 5, unit: 'SECONDS')
+        retry(2)
+    }
+    tools {
+        maven 'maven3'
+    }
+    stages {
+        stage ('stage 1') {
+            environment {
+                JAVA_HOME = '/usr/lib/jvm/jre-openjdk/'
+            }
+            
+            steps {
+                echo 'hello World1'
+                echo JAVA_HOME
+            }
+            post {
+                failure { 
+                    echo 'error'
+                }
+            }
+        }
+        stage ('stage 2') {
+            environment {
+                MAVEN_HOME = '/opt/maven'
+            }
+            steps {
+                echo 'hello world'
+                echo MAVEN_HOME
+            }
+            post {
+                failure { 
+                    echo 'error'
+                }
+            }
+        }
+        stage ('stage 3') {
+            steps {
+                echo 'hello World3'
+                sh 'mvn -v'
+            }
+        }
+    }
+}
