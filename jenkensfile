@@ -15,11 +15,7 @@ pipeline {
         maven 'maven3'
     }
     stages {
-        stage ('stage 1') {
-            environment {
-                JAVA_HOME = '/usr/lib/jvm/jre-openjdk/'
-            }
-            
+        stage ('stage 1') {            
             steps {
                 echo 'hello World1'
                 echo JAVA_HOME
